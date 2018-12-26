@@ -1,11 +1,15 @@
+const path = require('path')
+
 const webpack =  require('webpack')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const baseWebpackConfig = require('./webpack.base.conf')
+const config = require('../config')
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'production',
@@ -42,6 +46,11 @@ module.exports = merge(baseWebpackConfig, {
         collapseWhitespace: true
       }
     }),
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, '../static'),
+      to: config.dev.assetsSubDirectory,
+      ignore: ['.*']
+    }]),
     new VueLoaderPlugin()
   ]
 })
