@@ -36,7 +36,11 @@ module.exports = merge(baseWebpackConfig, {
       chunkFilename: "[id].css"
     }),
     new HtmlWebpackPlugin({
-      template: './index.html'
+      template: './index.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      }
     }),
     new VueLoaderPlugin()
   ]
