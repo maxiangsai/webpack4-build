@@ -8,5 +8,9 @@
     }]
   ],
   "plugins": ["@babel/plugin-transform-runtime"],
-  "env": {}
+  "env": {
+    "development": {
+      "plugins": ["dynamic-import-node"]
+    }
+  }
 }
