@@ -23,9 +23,17 @@ module.exports = merge(baseWebpackConfig, {
     hot: true,
     inline: true
   },
-  devtool: '#source-map',
+  devtool: '#cheap-eval-source-map',
   module: {
     rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
       {
         test: /\.css$/,
         use: [

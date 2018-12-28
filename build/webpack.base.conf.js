@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const utils = require('./utils')
+
 function resolve(dir) {
   return path.resolve(__dirname, '..', dir)
 }
@@ -11,8 +12,8 @@ module.exports = {
   },
   output: {
     path: resolve('dist'),
-    filename: 'js/[name].js',
-    chunkFilename: 'js/[name].[chunkhash:8].js'
+    filename: '[name].js',
+    chunkFilename: '[name].[chunkhash:5].js'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -30,7 +31,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: resolve('src')
+        include: [resolve('src')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
