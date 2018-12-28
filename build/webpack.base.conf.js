@@ -9,6 +9,11 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
+  output: {
+    path: resolve('dist'),
+    filename: 'js/[name].js',
+    chunkFilename: 'js/[name].[chunkhash:8].js'
+  },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {

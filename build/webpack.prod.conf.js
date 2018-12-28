@@ -13,6 +13,7 @@ const config = require('../config')
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'production',
+  devtool: false,
   module: {
     rules: [
       {
@@ -30,11 +31,6 @@ module.exports = merge(baseWebpackConfig, {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: "[id].css"
