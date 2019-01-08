@@ -2,6 +2,7 @@
 const path = require('path')
 const utils = require('./utils')
 
+const HappyPack = require('happypack')
 function resolve(dir) {
   return path.resolve(__dirname, '..', dir)
 }
@@ -30,8 +31,9 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src')]
+        loader: 'happypack/loader?id=happybabel',
+        include: [resolve('src')],
+        exclude: /node_modules/
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -58,5 +60,12 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new HappyPack({
+      id: 'happybabel',
+      loaders: ['babel-loader?cacheDirectory=true'],
+      threads: 4
+    })
+  ]
 }

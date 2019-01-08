@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "cross-env BABLE_ENV=development webpack-dev-server --config build/webpack.dev.conf.js",
     "build": "webpack --config build/webpack.prod.conf.js",
+    "build:dll": "webpack --config build/webpack.dll.conf.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +28,7 @@
     "copy-webpack-plugin": "^4.6.0",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
+    "happypack": "^5.0.1",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",

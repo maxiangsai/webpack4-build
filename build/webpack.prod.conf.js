@@ -1,5 +1,5 @@
 const path = require('path')
-
+const webpack = require('webpack')
 const merge = require('webpack-merge')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -77,6 +77,10 @@ module.exports = merge(baseWebpackConfig, {
       to: config.dev.assetsSubDirectory,
       ignore: ['.*']
     }]),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('../dist/vendor-manifest.json'),
+    })
   ]
 })
